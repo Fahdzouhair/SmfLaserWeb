@@ -1,0 +1,115 @@
+<div class="containerF">
+    <div class="title-block">
+        <h3>Modifier l'intervention {{ c_intervention.id }}</h3>
+    </div>
+    <div class="container_form">
+    
+        <form class="form" [formGroup]="editIntervention" >
+            
+            <div class="containerX">
+                <mat-form-field hintLabel="Max 50 characters" appearance="outline">
+                    <mat-label>l'Objet :</mat-label>
+                    <input matInput #input maxlength="50" formControlName="objet" >
+                    <mat-hint align="end">{{input.value.length}}/50</mat-hint>
+                    <mat-error *ngIf="objet?.invalid && objet?.touched">
+                        votre Objet est invalide
+                    </mat-error>
+                </mat-form-field>
+                
+                
+                  
+                  <div class="container_date">
+                    <div class="date_debut">
+                        <mat-form-field class="date" appearance="outline">
+                            <mat-label>La date de debut : </mat-label>
+                            <input matInput type="datetime-local" formControlName="date_debut">
+                            <mat-hint>Mois/Jours/Année</mat-hint>
+                            <mat-error *ngIf="date_debut?.invalid && date_debut?.touched">
+                                votre date de debut est incorrect
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                    <div class="date_fin">
+                        <mat-form-field class="date" appearance="outline">
+                            <mat-label>La date de fin : </mat-label>
+                            <input matInput type="datetime-local" formControlName="date_fin">
+                            <mat-hint>Mois/Jours/Année</mat-hint>
+                            <mat-error *ngIf="date_fin?.invalid && date_fin?.touched">
+                                votre date de fin est incorrect
+                            </mat-error>
+                          </mat-form-field>
+                    </div>  
+                  </div>
+
+                  <div class="container_date">
+                    <div class="date_debut_reel">
+                        <mat-form-field class="date" appearance="outline">
+                            <mat-label>La date de debut reel : </mat-label>
+                            <input matInput type="datetime-local" formControlName="date_debut_reel">
+                            <mat-hint>Mois/Jours/Année</mat-hint>
+                            <mat-error *ngIf="date_debut_reel?.invalid && date_debut_reel?.touched">
+                                votre date de debut reel est incorrect
+                            </mat-error>
+                          </mat-form-field>
+                          
+                    </div>
+                    <div class="date_fin_reel">
+                        <mat-form-field class="date"  appearance="outline">
+                            <mat-label>La date de fin reel : </mat-label>
+                            <input type="datetime-local"  matInput  formControlName="date_fin_reel">
+                            <mat-hint>Mois/Jours/Année</mat-hint>
+                            <mat-error *ngIf="date_fin_reel?.invalid && date_fin_reel?.touched">
+                                votre date de fin reel est incorrect
+                            </mat-error>
+                          </mat-form-field>
+                         
+                    </div>  
+                  </div>
+  
+                  <mat-form-field class="adresse" appearance="outline">
+                      <input matInput placeholder="adresse" formControlName="adresse">
+                      <mat-error *ngIf="adresse?.invalid && adresse?.touched">
+                          votre adresse est incorrect
+                      </mat-error>
+                  </mat-form-field>
+
+                  <div class="row">
+                   
+                    <!-- <div class="file">
+                        <input type="file" placeholder="Document" formControlName="document">
+                      <mat-error *ngIf="document?.invalid && document?.touched">
+                          votre document est incorrect
+                      </mat-error>
+                    </div> -->
+
+                    <mat-form-field class="document" appearance="outline">
+                        <input matInput placeholder="Document" formControlName="document">
+                        <mat-error *ngIf="document?.invalid && document?.touched">
+                            votre document est incorrect
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Choisissez un statut</mat-label>
+                        <mat-select formControlName="status">
+                          <mat-option  value="planifiée">Planifiée</mat-option>
+                          <mat-option  value="en cours">En cours </mat-option>
+                          <mat-option  value="suspendue">Suspendue </mat-option>
+                        </mat-select>
+                        <mat-hint align="end">Afficher les options</mat-hint>
+                        <mat-error *ngIf="status?.invalid && status?.touched">
+                            votre choix est incorrect
+                        </mat-error>
+                      </mat-form-field>
+                  </div>
+                  
+                  <div class="buttonDiv">
+                      <button (click)="editInterventionCall()"  class="btnC" mat-raised-button color="primary">Confirmer</button>
+                      <button (click)="goBck()" mat-raised-button color="warn"class="btnA" >Annuler</button>
+                  </div>
+            </div>
+            
+        </form> 
+        
+    </div>
+</div>

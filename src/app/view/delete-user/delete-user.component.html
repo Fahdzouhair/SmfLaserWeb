@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="container_delete_user">
+        <h3>Alert</h3>
+        <p>Voulez vous vraiment supprimer le mombre {{ c_user.nom }} ?</p>
+        <div class="btn_container">
+            <button  (click)="removeUser()" mat-raised-button color="primary">Confirmer</button>
+            <button (click)="goBack()"  class="btnA" mat-raised-button color="warn">Annuler</button>
+        </div>
+    </div>
+</div>

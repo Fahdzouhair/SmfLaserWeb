@@ -1,0 +1,29 @@
+<div class="login-container">
+    <div class="main-container">
+        <div class="card-container">
+            <div class="card-header">
+                <h6 class="card-title">{{title}}</h6>
+                <div class="img-container">
+                    <img src="assets/Logo-Smf-Web.png" width="50%" height="50%" alt="">
+                </div>
+            </div>
+        
+            <div class="card-body">
+                <label  class="label">Usercode</label>
+                <input #usercode class="userCodeInput" type="text">
+                <label class="label">Password</label>
+                <input #password class="passwordInput" type="text">
+            </div>
+        
+            <div class="card-footer">
+                <div> 
+                    <button (click)="loginIn(usercode.value,password.value)" class="submit">Submit
+                        <span>
+                            <img src="assets/check.png" width="15px" height="15px"alt="">
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    
+</div>

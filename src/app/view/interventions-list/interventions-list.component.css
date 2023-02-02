@@ -1,0 +1,62 @@
+.container_List_users{
+    font-family: 'Roboto';
+    font-weight: bold;
+    text-transform:uppercase;
+    color:rgb(44, 37, 37);
+    margin-top:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+.header_container{
+    
+    width:100%;
+}
+.addUsers_container{
+    margin-left: 2rem;
+}
+.search>h3 {
+    text-align: center;
+}
+
+.table{
+    margin-top: 2rem;
+    padding-bottom: 20px;
+}
+
+.tags{
+    width:100%;
+    margin-left: 5%;
+}
+
+button{
+    font-weight: bold;
+    color:rgba(27, 22, 22, 0.842);
+    margin:0 .2rem;
+    padding:.3rem .7rem;
+    border:none;
+    border-radius: 10px;
+}
+
+.search{
+    margin-left: 45%;
+    font-size: .8rem;
+
+}
+
+.encore{
+    background:#6cf0a3cc;
+  }
+
+  .suspendue{
+    background:#ff73ad
+  }
+
+  .enCours{
+    background:#8ba0ecdc;
+  }
+  

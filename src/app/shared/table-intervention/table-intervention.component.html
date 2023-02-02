@@ -1,0 +1,57 @@
+<div class="table-container">
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <th *ngFor="let key of tableHeader">{{key}}</th>
+                    <th>Action</th>
+                    <th>Détails</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <div *ngIf="!isEmptyData() ;then DataBlock ;else elseBlock"></div>
+            <ng-template #elseBlock>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center;font-size: 1rem;">No Data !</td>
+                    </tr>
+                   
+                </tbody>
+            </ng-template>
+            <ng-template #DataBlock>
+                <tbody>
+                   <!--  <tr *ngFor="let obj of tabValue">
+                        <td *ngFor="let val of obj">{{ valx }}</td>
+                        <td>
+                            <i (click)="editUser()" class="fa-solid edit fa-user-pen"></i>
+                            <i (click)="deleteUser()" class="fa-solid  remove fa-user-xmark"></i>
+                        </td>
+                    </tr>  -->
+                    <tr [class.isEncore]="isEncore(intervention.status)"  [class.isPlanified]="isPlanified(intervention.status)"  [class.isSuspended]="isSuspended(intervention.status)" *ngFor="let intervention of data">
+                        <td>{{intervention.id}}</td>
+                        <td [style.fontWeight]="'bold'">Responsable</td>
+                        <td>{{intervention.date_debut | date: "short" }}</td>
+                        <!-- <td>{{intervention.date_fin | date: "short"}}</td> -->
+                        <!-- <td>{{intervention.date_debut_reel | date: "short"}}</td>
+                        <td>{{intervention.date_fin_reel | date: "short"}}</td> -->
+                        <td>{{intervention.adresse}}</td>
+                       <!--  <td>{{intervention.document}}</td> -->
+                        <td>{{intervention.status}}</td>
+                        <td>
+                            <i (click)="editIntervention(intervention)" class="fa-solid edit fa-file-pen"></i>
+                            <i (click)="deleteIntervention(intervention)"  class="fa-solid fa-square-minus  remove "></i>
+                        </td>
+                        <td class="infoC">
+                            <i (click)='showDetails(intervention)' class="fa-solid info fa-circle-info"></i>
+                        </td>
+                    </tr>
+
+                   
+                </tbody>
+            </ng-template>
+        </table>
+    </div>
+</div>

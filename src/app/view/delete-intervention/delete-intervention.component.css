@@ -1,0 +1,46 @@
+.container{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:5rem;
+    font-family: 'Roboto';
+}
+
+.container_delete_user{
+    background-color: #AAE3E2;
+    color : #00425A;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+
+
+h3{
+    color:#f44336;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin:1rem;
+}
+
+p{
+    
+    margin:1rem;
+}
+
+.btn_container{
+    padding:1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btnC{
+    margin-right:.5rem;
+}
+
+.btnA{
+    margin-left: .5rem;
+}
+

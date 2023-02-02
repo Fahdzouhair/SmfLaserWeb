@@ -1,0 +1,17 @@
+<div class="container_List_users">
+    <div class="title">
+        <h3>List des interventions</h3>
+    </div>
+    <div class="tags">
+        <button class="encore">planifiée</button>
+        <button class="suspendue">suspendue</button>
+        <button class="enCours">en cours</button>
+        <mat-form-field class="search">
+            <input type="text" matInput placeholder="trouvez-vous ....">
+          </mat-form-field>
+          <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="table">
+        <app-table-intervention [tableHeader]="tableH" [data]="tableOfInterventions"></app-table-intervention>
+    </div>
+</div>

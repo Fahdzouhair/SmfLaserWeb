@@ -1,0 +1,28 @@
+.container_List_users{
+    font-family: 'Roboto';
+    font-weight: bold;
+    text-transform:uppercase;
+    color:rgb(44, 37, 37);
+    margin-top:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+.header_container{
+    
+    width:100%;
+}
+.addUsers_container{
+    margin-left: 2rem;
+}
+.search>h3 {
+    text-align: center;
+}
+
+.table{
+    margin-top: 2rem;
+}

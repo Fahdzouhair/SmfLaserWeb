@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'SMFLaser_WEB'`, () => {
+  it(`should have as title 'SMFLaser_project'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('SMFLaser_WEB');
+    expect(app.title).toEqual('SMFLaser_project');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('SMFLaser_WEB app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('SMFLaser_project app is running!');
   });
 });

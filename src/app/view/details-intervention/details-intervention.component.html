@@ -1,0 +1,48 @@
+<div class="container">
+
+    <div class="title">
+        <h3> <i class="fa-sharp icon_task fa-solid fa-thumbtack"></i>Intervention {{ c_intervention.id}}</h3>
+    </div>
+    <div class="container_details_Inter">
+
+
+        <div class="inter_details">
+            <div class="rowObjet">
+                <h5 class="objet"><i class="fa-solid icon fa-file-invoice"></i> Objet : </h5> <span class="data"> {{
+                    c_intervention.objet }}</span>
+            </div>
+            <div class="row">
+                <div class="date_">
+                    <h5 class="date_debut"><i class="fa-solid icon fa-calendar-week"></i>Date de debut : </h5> <span
+                        class="data"> {{ c_intervention.date_debut | date : "short" }}</span>
+                    <h5 class="date_fin"><i class="fa-solid icon fa-calendar-week"></i>Date de fin : </h5><span
+                        class="data"> {{ c_intervention.date_fin | date : "short" }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="date_reel">
+                    <h5 class="date_debut_reel"><i class="fa-solid icon fa-calendar"></i>Date de debut reel : </h5>
+                    <span class="data">
+                        {{ c_intervention.date_debut_reel | date : "short" }}</span> 
+                    <span *ngIf="checkD(c_intervention)" class="data" >. . . </span>
+                    <h5 class="date_fin_reel"><i class="fa-solid icon fa-calendar"></i>Date de fin reel : </h5>
+                         <span class="data"> {{ c_intervention.date_fin_reel | date : "short" }}</span> 
+                    <span *ngIf="checkF(c_intervention)" class="data">
+                        . . . </span>
+                </div>
+            </div>
+            <div class="row test">
+                <h5 class="adresse"><i class="fa-solid icon fa-location-dot"></i>Adresse : </h5><span class="data"> {{
+                    c_intervention.adresse }}</span>
+                <h5 class="statut"><i class="fa-solid icon fa-bars-progress"></i>Statut : </h5><span
+                    [class.encore]="c_intervention.status == 'en cours' "
+                    [class.suspendue]="c_intervention.status =='suspendue' "
+                    [class.planifie]="c_intervention.status == 'planifiée' " class="data dataStatus"> {{
+                    c_intervention.status }}</span>
+            </div>
+        </div>
+        <div class="btn_container">
+            <button (click)="goBack()" class="btnA" mat-raised-button color="warn">Retour</button>
+        </div>
+    </div>
+</div>

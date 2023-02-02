@@ -1,0 +1,48 @@
+<div class="table-container">
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <th *ngFor="let key of tableHeader">{{key}}</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <div *ngIf="!isEmptyData() ;then DataBlock ;else elseBlock"></div>
+            <ng-template #elseBlock>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center;font-size: 1rem;">No Data !</td>
+                    </tr>
+                   
+                </tbody>
+            </ng-template>
+            <ng-template #DataBlock>
+                <tbody>
+                   <!--  <tr *ngFor="let obj of tabValue">
+                        <td *ngFor="let val of obj">{{ valx }}</td>
+                        <td>
+                            <i (click)="editUser()" class="fa-solid edit fa-user-pen"></i>
+                            <i (click)="deleteUser()" class="fa-solid  remove fa-user-xmark"></i>
+                        </td>
+                    </tr>  -->
+                    <tr *ngFor="let user of data">
+                        <td>{{user.nom}}</td>
+                        <td>{{user.prenom}}</td>
+                        <td>{{user.tele}}</td>
+                        <td class="modif">{{user.email}}</td>
+                        <td>{{user.adresse}}</td>
+                        <td>
+                            <i (click)="editUser(user)" class="fa-solid edit fa-user-pen"></i>
+                            <i (click)="deleteUser(user)" class="fa-solid  remove fa-user-xmark"></i>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </ng-template>
+        </table>
+    </div>
+</div>

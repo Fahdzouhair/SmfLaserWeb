@@ -1,0 +1,68 @@
+<div class="containerF">
+    <div class="title-block">
+        <h3>Ajouter une equipe</h3>
+    </div>
+    
+    <div class="container_form">
+    
+        <form class="form" [formGroup]="addEquipe" >
+            
+            <div class="containerX">
+
+                <mat-form-field class="nom" appearance="outline">
+                    <input matInput placeholder="Nom" formControlName="nom">
+                    <mat-error *ngIf="nom?.invalid && nom?.touched">
+                        votre nom est incorrect
+                    </mat-error>
+                </mat-form-field>
+                
+
+                  <div class="row">
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Choisissez un Responsable d'equipe</mat-label>
+                        <mat-select formControlName="chefEquipe">
+                           <mat-option *ngFor="let resp of listRespo" value="{{resp.id}}">{{ getFullName(resp) }}</mat-option>
+                      </mat-select>
+                        <mat-hint align="end">Afficher les options</mat-hint>
+                        <mat-error *ngIf="chefEquipe?.invalid && chefEquipe?.touched">
+                            votre choix est incorrect
+                        </mat-error>
+                      </mat-form-field>
+
+                     <div class="line">
+                        <div class="membreForm" formArrayName="membres">
+                            <ng-container  *ngFor="let membreForm of membres.controls;let i=index" [formGroupName]="i">
+                                <div>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Choisissez un membre</mat-label>
+                                        <mat-select formControlName="membre">
+                                          <mat-option *ngFor="let membre_ of listMembre" value="{{membre_.id}}">{{ getFullName(membre_) }}</mat-option> 
+                                        </mat-select>
+                                        <mat-hint align="end">Afficher les options</mat-hint>
+                                        <!-- <mat-error *ngIf="membres.controls[i].get['membre'].errors?.required">
+                                            votre choix est incorrect
+                                        </mat-error>  -->
+                                    </mat-form-field>
+                                    <i  (click)="removeMembre(i)" class="fa-solid iconP fa-minus"></i>
+                        
+                                </div>
+                                
+                            </ng-container>
+                        </div>
+                    <div class="addUser">
+                        <i (click)="addMembre()" class="fa-solid add fa-plus"><span class="addMembreText">Ajouter membre</span></i>
+                    </div>
+                     </div>
+                    
+                  </div>
+                  
+                  <div class="buttonDiv">
+                      <button  (click)="addTeam()" class="btnC" mat-raised-button color="primary">Confirmer</button>
+                  </div>
+            </div>
+            
+        </form> 
+        
+    </div>
+</div>

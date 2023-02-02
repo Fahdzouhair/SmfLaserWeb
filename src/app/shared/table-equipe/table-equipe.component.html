@@ -1,0 +1,42 @@
+<div class="table-container">
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <th *ngFor="let key of tableHeader">{{key}}</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <div *ngIf="!isEmptyData() ;then DataBlock ;else elseBlock"></div>
+            <ng-template #elseBlock>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center;font-size: 1rem;">No Data !</td>
+                    </tr>
+                
+                </tbody>
+            </ng-template>
+            <ng-template #DataBlock>
+                <tbody>
+                    <tr *ngFor="let team of data">
+                        <td>{{team.id}}</td>
+                        <td>{{team.nom }}</td>
+                        <td [style.fontWeight]="'bold'">{{ test(team) }}</td>
+                        <td *ngIf="team.nom !== undefined">
+                            <i (click)="editEquipe(team)" class="fa-solid edit fa-edit"></i>
+                            <i (click)="deleteEquipe(team)"  class="fa-solid remove fa-trash"></i>
+                        </td>
+                    </tr>
+                    <tr class="noData" *ngIf="empty">
+                        No Data 
+                    </tr>
+                   
+                </tbody>
+            </ng-template>
+        </table>
+    </div>
+</div>

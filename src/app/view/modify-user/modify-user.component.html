@@ -1,0 +1,53 @@
+<div class="containerF">
+    <div class="title-block">
+        <h3>Modifier le membre {{ c_user.nom }}</h3>
+    </div>
+
+    <div class="container_form">
+        <form class="form" [formGroup]="editForm" >
+            
+            <hr>
+            <div class="row name">
+                <mat-form-field>
+                    <input matInput placeholder="Nom" formControlName="nom">
+                    <mat-error *ngIf="nom?.invalid && nom?.touched">
+                        votre nom est incorrect
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Prenom" formControlName="prenom">
+                    <mat-error *ngIf="prenom?.invalid && prenom?.touched">
+                        votre prenom est incorrect
+                    </mat-error>
+                </mat-form-field>
+            </div>
+                <mat-form-field class="tele">
+                  <mat-label>Telephone</mat-label>
+                  <span matPrefix>+212 &nbsp;</span>
+                  <input type="tel" matInput placeholder="Num de Telephone" formControlName="tele">
+                  <mat-icon matSuffix>mode_edit</mat-icon>
+                  <mat-error *ngIf="tele?.invalid && tele?.touched">
+                    votre num de telephone est incorrect
+                </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="adresse" formControlName="adresse">
+                    <mat-error *ngIf="adresse?.invalid && adresse?.touched">
+                        votre adresse est incorrect
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="email?.invalid && email?.touched">
+                        votre email est incorrect
+                    </mat-error>
+                </mat-form-field>
+                <div class="buttonDiv">
+                    <button (click)="modifyUser(c_user.id)" class="btnC" mat-raised-button color="primary">Confirmer</button>
+                    <button (click)="cancel()" class="btnA" mat-raised-button color="warn">Annuler</button>
+                </div>
+        </form> 
+        
+    </div>
+</div>
