@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 import { User } from 'src/app/Models/user';
 
@@ -15,7 +15,7 @@ export class TableComponent implements OnInit {
   @Input() public tableHeader:string[] = [];
   @Input() public data:User[] = []
 
-  constructor(private router:Router) {
+  constructor(private router:Router,private route:ActivatedRoute) {
     
   }
  
@@ -34,20 +34,31 @@ export class TableComponent implements OnInit {
      return this.tableHeader.length ?  false : true;
   }
 
-/*   public getData(dataTable: any[]){
-    dataTable.forEach((data: any) => {
-      this.tabKey = Object.keys(data);
-      this.tabValue.push(Object.values(data));
-     
-  })
-  } */
-
-  editUser(user:User){
-    this.router.navigate(['/dashboardAdmin/modifyUser/',user.id]);
+  editUser(user:any){
+    if(this.route.component?.name == 'ClientComponent'){
+      this.router.navigate(['/dashboardRespo/modifyClient/',user.id]);
+    }else{
+      if(user.roles[0].role == 'ROLE_RESPONSABLE_EQUIPE'){
+        this.router.navigate(['/dashboardAdmin/modifyChefEquipe/',user.id]);
+      }else{
+        this.router.navigate(['/dashboardAdmin/modifyUser/',user.id]);
+      }
+    }
+    
   }
 
-  deleteUser(user:User){
-    this.router.navigate(['/dashboardAdmin/deleteUser/',user.id]);
+  deleteUser(user:any){
+    console.log(user);
+    if(this.route.component?.name == 'ClientComponent'){
+      this.router.navigate(['/dashboardRespo/deleteClient',user.id]);
+    }else{
+      if(user.roles[0].role == 'ROLE_RESPONSABLE_EQUIPE'){
+        this.router.navigate(['/dashboardAdmin/deleteChefEquipe/',user.id]);
+      }else{
+        this.router.navigate(['/dashboardAdmin/deleteUser/',user.id]);
+      }
+      
+    }
   }
 
 }

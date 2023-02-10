@@ -16,50 +16,8 @@ export class ModifyTeamComponent implements OnInit {
   c_equipe !: Equipe;
   id?:any;
 
-  listRespo: User[] = [
-    {
-      id:1,
-      nom:"saif",
-      prenom:"zouhair",
-      tele:"string",
-      adresse:"Essuipora",
-      email:"test@gmail.com"
-    },
-    {
-      id:2,
-      nom:"omar",
-      prenom:"zouhair",
-      tele:"string",
-      adresse:"Essuipora",
-      email:"test@gmail.com"
-    },
-    {
-      id:3,
-      nom:"ibrahim",
-      prenom:"zouhair",
-      tele:"string",
-      adresse:"Essuipora",
-      email:"test@gmail.com"
-    }
-    ];
-    listMembre: User[] = [
-      {
-        id:1,
-        nom:"naaima",
-        prenom:"khadija",
-        tele:"string",
-        adresse:"Essuipora",
-        email:"test@gmail.com"
-      },
-      {
-        id:2,
-        nom:"houda",
-        prenom:"khadija",
-        tele:"string",
-        adresse:"Essuipora",
-        email:"test@gmail.com"
-      }
-    ];
+  listRespo: User[] = [];
+  listMembre: User[] = [];
 
   constructor(private fb : FormBuilder,private router:Router,private equipe_service:EquipeService,private user_service:UsersService,private route:ActivatedRoute  ) { }
 
@@ -91,27 +49,50 @@ export class ModifyTeamComponent implements OnInit {
       membres:this.fb.array([])
     })
 
-    /*
+    this.route.paramMap.subscribe(res => this.id = res.get('id'));
+    this.getCurrentTeam(this.id);
 
-    getCurrentEquipe(id:any){
-      this.equipe_service.getEquipeById(id).subscribe(
-       e => {
-         this. = e;
-         this.editIntervention.patchValue({...e});
-       }
-      )
-   } */
+    console.log(this.modifyEquipe.value);
  
 }
+  getCurrentTeam(id: any) {
+    this.equipe_service.getEquipeById(id).subscribe(
+      res => {
+        this.c_equipe = res;
+        let equipeTo : any = this.c_equipe;
+        const nom = equipeTo.nom;
+        const chefEquipe = equipeTo.responsableEquipe.id;
+
+        console.log({id : id , chefEquipe : chefEquipe});
+        
+        this.modifyEquipe.patchValue({nom : nom , chefEquipe : chefEquipe});
+        console.log(this.modifyEquipe.value);
+      }
+    )
+  }
 
   ApplyChanges(){
-      
+      if(this.modifyEquipe.valid){
+        this.equipe_service.updateEquipe(this.modifyEquipe.value).subscribe({
+          next:(res) => {
+            alert(`l'equipe ${this.modifyEquipe.value.nom} a été modifié`)
+            this.router.navigateByUrl('/dashboardRespo/teams')
+          },
+          error:(err) => {
+            console.error(err);
+          }
+        })
+      }
   }
 
   getFullName(resp:User){
     return `${resp.nom} ${resp.prenom}`
   }
 
+  getFullName2(id?:number){
+    let fullName : string = '';
+    return fullName;
+  }
 
   get nom(){
     return this.modifyEquipe.get("nom");

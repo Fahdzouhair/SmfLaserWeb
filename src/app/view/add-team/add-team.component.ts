@@ -16,16 +16,9 @@ import { UsersService } from 'src/app/Services/users.service';
 export class AddTeamComponent implements OnInit {
   addEquipe!: FormGroup;
   listRespo: User[] = [
-  {
-    id:1,
-    nom:"saif",
-    prenom:"zouhair",
-    tele:"string",
-    adresse:"Essuipora",
-    email:"test@gmail.com"
-  }
 ];
-  listMembre: User[] = [];
+  listMembre: User[] = [
+  ];
   
   constructor(private fb : FormBuilder,private router:Router,private equipe_service:EquipeService,private route:ActivatedRoute,private user_service:UsersService) { 
 
@@ -34,6 +27,7 @@ export class AddTeamComponent implements OnInit {
   ngOnInit(): void {
     this.user_service.getUsers().subscribe({
       next:res => {
+        console.log(res);
           this.listMembre = res;
       },
       error:err => {
@@ -44,6 +38,9 @@ export class AddTeamComponent implements OnInit {
 
     this.user_service.getChefEquipe().subscribe({
       next:res => {
+        console.log(res);
+
+        
         this.listRespo = res;
        },
        error:err => {
@@ -51,6 +48,8 @@ export class AddTeamComponent implements OnInit {
        }
     }
     )
+
+   
 
     this.addEquipe = this.fb.group({
       nom:['',Validators.required],

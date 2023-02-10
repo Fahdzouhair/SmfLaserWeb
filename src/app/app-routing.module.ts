@@ -9,11 +9,15 @@ import { AddInterventionComponent } from './view/add-intervention/add-interventi
 import { AddTeamComponent } from './view/add-team/add-team.component';
 import { AddUserComponent } from './view/add-user/add-user.component';
 import { ClientComponent } from './view/client/client.component';
+import { DeleteChefEquipeComponent } from './view/delete-chef-equipe/delete-chef-equipe.component';
+import { DeleteClientComponent } from './view/delete-client/delete-client.component';
 import { DeleteInterventionComponent } from './view/delete-intervention/delete-intervention.component';
 import { DeleteTeamComponent } from './view/delete-team/delete-team.component';
 import { DeleteUserComponent } from './view/delete-user/delete-user.component';
 import { DetailsInterventionComponent } from './view/details-intervention/details-intervention.component';
 import { InterventionsListComponent } from './view/interventions-list/interventions-list.component';
+import { ModifyChefEquipeComponent } from './view/modify-chef-equipe/modify-chef-equipe.component';
+import { ModifyClientComponent } from './view/modify-client/modify-client.component';
 import { ModifyInterventionComponent } from './view/modify-intervention/modify-intervention.component';
 import { ModifyTeamComponent } from './view/modify-team/modify-team.component';
 import { ModifyUserComponent } from './view/modify-user/modify-user.component';
@@ -52,12 +56,20 @@ const routes: Routes = [
       component: ModifyUserComponent
     },
     {
+      path:'modifyChefEquipe/:id',
+      component: ModifyChefEquipeComponent
+    },
+    {
       path:'addUser',
       component: AddUserComponent
     },
     {
       path:'deleteUser/:id',
       component: DeleteUserComponent
+    },
+    {
+      path:'deleteChefEquipe/:id',
+      component: DeleteChefEquipeComponent
     }
   ]
 },
@@ -111,11 +123,11 @@ const routes: Routes = [
     },
     {
       path:'modifyClient/:id',
-      component: ModifyTeamComponent
+      component: ModifyClientComponent
     },
     {
       path:'deleteClient/:id',
-      component : DeleteTeamComponent
+      component : DeleteClientComponent
     }
     
   ]

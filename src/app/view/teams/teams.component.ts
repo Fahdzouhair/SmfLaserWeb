@@ -9,12 +9,13 @@ import { EquipeService } from 'src/app/Services/equipe.service';
 export class TeamsComponent implements OnInit {
   tableH:string[] = ['id','Nom','Responsable'];
   tableOfTeams:any = [    
-   
+  
   ];
   constructor(private equipe:EquipeService) { }
 
   ngOnInit(): void {
     this.getEquipe()
+    console.log(this.tableOfTeams)
   }
 
   getEquipe(){

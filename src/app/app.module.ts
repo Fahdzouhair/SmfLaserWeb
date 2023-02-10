@@ -46,6 +46,8 @@ import { ClientComponent } from './view/client/client.component';
 import { AddClientComponent } from './view/add-client/add-client.component';
 import { ModifyClientComponent } from './view/modify-client/modify-client.component';
 import { DeleteClientComponent } from './view/delete-client/delete-client.component';
+import { DeleteChefEquipeComponent } from './view/delete-chef-equipe/delete-chef-equipe.component';
+import { ModifyChefEquipeComponent } from './view/modify-chef-equipe/modify-chef-equipe.component';
 registerPlugin(FilePondPluginFileValidateType)
 
 @NgModule({
@@ -76,7 +78,9 @@ registerPlugin(FilePondPluginFileValidateType)
     ClientComponent,
     AddClientComponent,
     ModifyClientComponent,
-    DeleteClientComponent
+    DeleteClientComponent,
+    DeleteChefEquipeComponent,
+    ModifyChefEquipeComponent
   ],
   imports: [
     BrowserModule,

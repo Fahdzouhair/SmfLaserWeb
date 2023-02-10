@@ -17,12 +17,14 @@ export class InterventionsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInterventions();
+    console.log(this.tableOfInterventions);
   }
  
   getInterventions(){
     return this.intervention_service.getIntervention().subscribe({
       next: (res) => {
         this.tableOfInterventions = res;
+        console.log(res);
       },
       error: (err) => {
         console.log(err);

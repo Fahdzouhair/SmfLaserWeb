@@ -5,13 +5,13 @@ import { User } from 'src/app/Models/user';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
-  selector: 'app-modify-user',
-  templateUrl: './modify-user.component.html',
-  styleUrls: ['./modify-user.component.css']
+  selector: 'app-modify-chef-equipe',
+  templateUrl: './modify-chef-equipe.component.html',
+  styleUrls: ['./modify-chef-equipe.component.css']
 })
-export class ModifyUserComponent implements OnInit {
+export class ModifyChefEquipeComponent implements OnInit {
   editForm !: FormGroup;
-  c_user !: User;
+  c_chef_equipe !: User;
   id?:any;
   constructor(private fb : FormBuilder,private router:Router,private user_service:UsersService,private route:ActivatedRoute) { }
 
@@ -30,14 +30,14 @@ export class ModifyUserComponent implements OnInit {
     })
     this.route.paramMap.subscribe(res => this.id = res.get('id'));
 
-    this.getCurrentUser(this.id);
+    this.getCurrentChefEquipe(this.id);
     
   }
 
-  modifyUser(id?:number){
+  modifyChefEquipe(id?:number){
     if(this.editForm.valid){
 
-      this.user_service.updateUser(this.editForm.value,id).subscribe({
+      this.user_service.updateChefEquipe(this.editForm.value,id).subscribe({
         next:(res) => {
           alert(`le membre ${this.editForm.value.nom} a été modifié`)
           this.router.navigateByUrl('/dashboardAdmin/users')
@@ -46,15 +46,6 @@ export class ModifyUserComponent implements OnInit {
           console.error(err);
         }
       })
-      
-      /* this.user_service.postUser(this.editForm.value).subscribe({
-        next:(res) => {
-          this.route.navigateByUrl('/dashboardAdmin/users')
-        },
-        error:(err) => {
-          alert("Error !");
-        }
-      }) */
     }
     
     
@@ -64,11 +55,13 @@ export class ModifyUserComponent implements OnInit {
     this.router.navigateByUrl('/dashboardAdmin/users');
   }
 
-  getCurrentUser(id:number){
-    this.user_service.getUserById(id).subscribe(res => {
-        this.c_user =res;
+  getCurrentChefEquipe(id:number){
+    this.user_service.getChefEquipeById(id).subscribe(
+      res => {
+        this.c_chef_equipe = res;
         this.editForm.patchValue({...res});
-    })
+      }
+      )
   }
 
   get nom(){

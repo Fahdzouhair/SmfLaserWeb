@@ -33,7 +33,7 @@ export class AddInterventionComponent implements OnInit {
       id:1,
       nom:"client",
       prenom:"1",
-      tele:"98986786",
+      numeroTelephone:"98986786",
       adresse:"Essuipora",
       email:"test@gmail.com"
     }

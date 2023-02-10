@@ -27,17 +27,35 @@
                         votre email est incorrect
                     </mat-error>
                 </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput type="password" placeholder="Password"  formControlName="password">
+                    <mat-error *ngIf="password?.invalid && password?.touched">
+                        votre password est incorrect
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div class="row">
                 <mat-form-field class="tele" appearance="outline">
                     <mat-label>Telephone</mat-label>
                     <span matPrefix>+212 &nbsp;</span>
-                    <input type="tel" matInput placeholder="Num de Telephone" formControlName="tele">
+                    <input type="tel" matInput placeholder="Num de Telephone" formControlName="numeroTelephone">
                     <mat-icon matSuffix>mode_edit</mat-icon>
                     <mat-error *ngIf="tele?.invalid && tele?.touched">
                       votre num de telephone est incorrect
                   </mat-error>
                   </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <mat-label>Choisissez un role</mat-label>
+                    <mat-select formControlName="role">
+                        <mat-option  value="1">Membre</mat-option>
+                        <mat-option  value="2">Responsable</mat-option>
+                    </mat-select>
+                    <mat-hint align="end">Afficher les options</mat-hint>
+                    <mat-error *ngIf="role?.invalid && role?.touched">
+                        votre choix est incorrect
+                    </mat-error>
+                </mat-form-field>
   
                   <mat-form-field appearance="outline">
                       <input matInput placeholder="adresse" formControlName="adresse">

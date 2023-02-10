@@ -14,22 +14,45 @@ export class UsersListComponent implements OnInit {
   tableOfUseres:User[] = [
     
   ];
+  List_users ?: User[];
+  List_Respo ?: User[];
+  test:Boolean = false;
   constructor(private user_service:UsersService,private router:Router) { }
 
   ngOnInit(): void {
-    this.getUsers();
+   this.getAllUser();
   }
- 
+  
+
+  getAllUser(){
+    
+     this.getUsers();
+     this.getResponsables();
+     if(this.test){
+        window.location.reload();
+     }
+    
+  }
+
   getUsers(){
     return this.user_service.getUsers().subscribe({
       next:(res) => {
         this.tableOfUseres = res;
-        //console.log(res);
       },
-      error:(err) => {
-        alert("error !");
-      }
+      error:(err) => console.log(err)
     })
+  }
+
+    getResponsables(){
+      return this.user_service.getChefEquipe().subscribe({
+        next:(res) => {
+          this.test = true;
+          console.log(res);
+          this.tableOfUseres = this.tableOfUseres.concat(res);
+        },
+        error:(err) => console.log(err)
+      })
+    }
   } 
 
   
@@ -50,4 +73,3 @@ export class UsersListComponent implements OnInit {
 
  
 
-}

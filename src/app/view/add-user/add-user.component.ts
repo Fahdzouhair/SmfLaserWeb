@@ -18,21 +18,25 @@ export class AddUserComponent implements OnInit {
     this.addForm = this.fb.group({
       nom:['',Validators.required],
       prenom:['',Validators.required],
-      tele : ['',[
+      password:['',Validators.required],
+      numeroTelephone : ['',[
         Validators.required
       ]],
       email: ['',[
         Validators.required,
         Validators.email
       ]],
-      adresse:['',Validators.required]
+      adresse:['',Validators.required],
+      role:['',Validators.required],
+      
     })
     
   }
 
   addUser(){
+    console.log(this.addForm.value);
+    console.log(this.addForm.valid);
     if(this.addForm.valid){
-
       this.user_service.postUser(this.addForm.value).subscribe({
         next:(res) => {
           //console.log(res);
@@ -40,7 +44,7 @@ export class AddUserComponent implements OnInit {
           this.router.navigateByUrl('/dashboardAdmin/users')
         },
         error:(err) => {
-          alert("erreur de création !");
+          console.log(err);
         }
       })
     }
@@ -70,7 +74,12 @@ export class AddUserComponent implements OnInit {
     return this.addForm.get('adresse');
   }
 
+  get role(){
+    return this.addForm.get('role');
+  }
   
-  
+  get password(){
+    return this.addForm.get('password'); 
+  }
 }
 
